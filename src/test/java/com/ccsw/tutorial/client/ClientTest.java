@@ -60,7 +60,7 @@ public class ClientTest {
     
 
     @Test
-    public void saveExistsCategoryIdShouldUpdate() {
+    public void saveExistsClientIdShouldUpdate() {
 
       ClientDto clientDto = new ClientDto();
       clientDto.setName(CLIENT_NAME);
@@ -71,6 +71,28 @@ public class ClientTest {
       clientService.save(EXISTS_CLIENT_ID, clientDto);
 
       verify(clientRepository).save(client);
+    }
+    
+    //No debería insertarse ya que el nombre existe en la base de datos
+    @Test
+    public void saveNotExistsClientIdShouldInsertNameExistsInBbdd() {
+    	
+    }
+    //Si debería insertarse ya que el nombre no existe en la base de datos
+    @Test
+    public void saveNotExistsClientIdShouldInsertNameNotExistsInBbdd() {
+    	
+    }
+    
+    //No debería actualizarse ya que el nombre existe en la base de datos
+    @Test
+    public void saveNotExistsClientIdShouldUpdateNameExistsInBbdd() {
+    	
+    }
+    //Si debería actualizarse ya que el nombre no existe en la base de datos
+    @Test
+    public void saveNotExistsClientIdShouldUpdateNameNotExistsInBbdd() {
+    	
     }
     
     @Test

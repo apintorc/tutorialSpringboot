@@ -36,4 +36,6 @@ public interface ClientService {
     * @param id
     */
     void delete(Long id);
+
+    boolean exists(String name);
 }

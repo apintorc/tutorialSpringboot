@@ -37,6 +37,11 @@ public class ClientServiceImpl implements ClientService {
 
         return (List<Client>) this.clientRepository.findAll();
     }
+    
+
+     public boolean exists(String name){
+        return clientRepository.existsByName(name);
+     }
 
     /**
     * {@inheritDoc}

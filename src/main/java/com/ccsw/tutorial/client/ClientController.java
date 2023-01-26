@@ -3,6 +3,8 @@ package com.ccsw.tutorial.client;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,9 +45,13 @@ public class ClientController {
   * @return
   */
   @RequestMapping(path = { "", "/{id}" }, method = RequestMethod.PUT)
-  public void save(@PathVariable(name = "id", required = false) Long id, @RequestBody ClientDto dto) {
-
-    this.clientService.save(id, dto);
+  public ResponseEntity<ClientDto> save(@PathVariable(name = "id", required = false) Long id, @RequestBody ClientDto dto) {
+	  //Si el cliente no existe en la base de datos lo guardamos.
+	  if(!clientService.exists(dto.getName())){
+		  this.clientService.save(id, dto);
+		  return new ResponseEntity<ClientDto>(HttpStatus.OK);
+	  }
+	  return new ResponseEntity<ClientDto>(HttpStatus.BAD_REQUEST);
   }
 
   /**
