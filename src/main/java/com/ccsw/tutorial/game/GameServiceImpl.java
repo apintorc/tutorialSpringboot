@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.ccsw.tutorial.author.AuthorService;
 import com.ccsw.tutorial.category.CategoryService;
+import com.ccsw.tutorial.client.model.Client;
 import com.ccsw.tutorial.game.model.Game;
 import com.ccsw.tutorial.game.model.GameDto;
 
@@ -57,6 +58,15 @@ public class GameServiceImpl implements GameService {
         game.setCategory(categoryService.get(dto.getCategory().getId()));
 
         this.gameRepository.save(game);
+    }
+    
+    /**
+    * {@inheritDoc}
+    */
+    @Override
+    public Game get(Long id) {
+
+        return this.gameRepository.findById(id).orElse(null);
     }
 
 }

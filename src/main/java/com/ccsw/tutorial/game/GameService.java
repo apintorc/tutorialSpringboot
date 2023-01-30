@@ -2,6 +2,7 @@ package com.ccsw.tutorial.game;
 
 import java.util.List;
 
+import com.ccsw.tutorial.client.model.Client;
 import com.ccsw.tutorial.game.model.Game;
 import com.ccsw.tutorial.game.model.GameDto;
 
@@ -24,5 +25,12 @@ public interface GameService {
     * @param dto
     */
     void save(Long id, GameDto dto);
+    
+    /**
+    * Recupera un {@link com.ccsw.tutorial.client.model.Game} a partir de su ID
+    * @param id
+    * @return
+    */
+	Game get(Long id);
 
 }
