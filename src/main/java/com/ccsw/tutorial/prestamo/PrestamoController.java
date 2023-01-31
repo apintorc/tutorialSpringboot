@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ccsw.tutorial.author.model.AuthorDto;
-import com.ccsw.tutorial.author.model.AuthorSearchDto;
 import com.ccsw.tutorial.prestamo.model.Prestamo;
 import com.ccsw.tutorial.prestamo.model.PrestamoDto;
 import com.ccsw.tutorial.prestamo.model.PrestamoSearchDto;
@@ -50,10 +48,10 @@ public class PrestamoController {
     @RequestMapping(path = "", method = RequestMethod.GET)
     public List<PrestamoDto> find(@RequestParam(value = "idGame", required = false) Long idGame,
             @RequestParam(value = "idClient", required = false) Long idClient, 
-            @RequestParam(value = "fecha_inicio", required = false) Date fecha_inicio, 
-            @RequestParam(value = "fecha_fin", required = false) Date fecha_fin) {
+            @RequestParam(value = "fechaInicio", required = false) Date fechaInicio, 
+            @RequestParam(value = "fechaFin", required = false) Date fechaFin) {
 
-        List<Prestamo> prestamos = prestamoService.find(idGame, idClient, fecha_inicio, fecha_fin);
+        List<Prestamo> prestamos = prestamoService.find(idGame, idClient, fechaInicio, fechaFin);
 
         return beanMapper.mapList(prestamos, PrestamoDto.class);
     }
@@ -62,6 +60,16 @@ public class PrestamoController {
     public void save(@PathVariable(name = "id", required = false) Long id, @RequestBody PrestamoDto dto) {
 
     	prestamoService.save(id, dto);
+    }
+    
+    /**
+    * Método para eliminar un {@link com.ccsw.tutorial.author.model.Author}
+    * @param id PK de la entidad
+    */
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") Long id) {
+
+        this.prestamoService.delete(id);
     }
 
 }

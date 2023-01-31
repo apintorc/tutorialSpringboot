@@ -21,8 +21,8 @@ INSERT INTO GAME(id, title, age, category_id, author_id) VALUES (4, 'Barrage', '
 INSERT INTO GAME(id, title, age, category_id, author_id) VALUES (5, 'Los viajes de Marco Polo', '12', 1, 3);
 INSERT INTO GAME(id, title, age, category_id, author_id) VALUES (6, 'Azul', '8', 3, 5);
 
-INSERT INTO PRESTAMO(id, game_id, client_id, fecha_inicio, fecha_fin) VALUES (1, 1, 1, '2021-12-25', '2022-12-29');
-INSERT INTO PRESTAMO(id, game_id, client_id, fecha_inicio, fecha_fin) VALUES (2, 2, 2, '2021-12-25', '2022-12-29');
-INSERT INTO PRESTAMO(id, game_id, client_id, fecha_inicio, fecha_fin) VALUES (3, 3, 3, '2021-12-25', '2022-12-29');
-INSERT INTO PRESTAMO(id, game_id, client_id, fecha_inicio, fecha_fin) VALUES (4, 4, 2, '2021-12-25', '2022-12-29');
-INSERT INTO PRESTAMO(id, game_id, client_id, fecha_inicio, fecha_fin) VALUES (5, 5, 1, '2021-12-25', '2022-12-29');
+INSERT INTO PRESTAMO(id, game_id, client_id, fechaInicio, fechaFin) VALUES (1, 1, 1, '2021-12-25', '2022-12-29');
+INSERT INTO PRESTAMO(id, game_id, client_id, fechaInicio, fechaFin) VALUES (2, 2, 2, '2021-12-25', '2022-12-29');
+INSERT INTO PRESTAMO(id, game_id, client_id, fechaInicio, fechaFin) VALUES (3, 3, 3, '2021-12-25', '2022-12-29');
+INSERT INTO PRESTAMO(id, game_id, client_id, fechaInicio, fechaFin) VALUES (4, 4, 2, '2021-12-25', '2022-12-29');
+INSERT INTO PRESTAMO(id, game_id, client_id, fechaInicio, fechaFin) VALUES (5, 5, 1, '2021-12-25', '2022-12-29');

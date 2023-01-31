@@ -11,8 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.ccsw.tutorial.game.GameService;
-import com.ccsw.tutorial.author.model.Author;
-import com.ccsw.tutorial.author.model.AuthorSearchDto;
 import com.ccsw.tutorial.client.ClientService;
 import com.ccsw.tutorial.prestamo.model.Prestamo;
 import com.ccsw.tutorial.prestamo.model.PrestamoDto;
@@ -38,9 +36,9 @@ public class PrestamoServiceImpl implements PrestamoService {
     * {@inheritDoc}
     */
     @Override
-    public List<Prestamo> find(Long idGame, Long idClient, Date fecha_inicio, Date fecha_fin){
+    public List<Prestamo> find(Long idGame, Long idClient, Date fechaInicio, Date fechaFin){
 
-        return this.prestamoRepository.find(idGame, idClient, fecha_inicio, fecha_fin);
+        return this.prestamoRepository.find(idGame, idClient, fechaInicio, fechaFin);
     }
 
     /**
@@ -48,14 +46,16 @@ public class PrestamoServiceImpl implements PrestamoService {
     */
     @Override
     public void save(Long id, PrestamoDto dto) {
+    	Prestamo prestamo = null;
+        if (id == null)
+        	prestamo = new Prestamo();
 
-        Prestamo prestamo = new Prestamo();
-
-        BeanUtils.copyProperties(dto, prestamo, "id", "game", "client", "fecha_inicio", "fecha_fin");
-
+        BeanUtils.copyProperties(dto, prestamo, "id", "game", "client");
+        
+        
         prestamo.setGame(gameService.get(dto.getGame().getId()));
         prestamo.setClient(clientService.get(dto.getClient().getId()));
-
+        
         this.prestamoRepository.save(prestamo);
     }
     
@@ -76,6 +76,16 @@ public class PrestamoServiceImpl implements PrestamoService {
     public List<Prestamo> findAll() {
 
         return (List<Prestamo>) this.prestamoRepository.findAll();
+    }
+    
+    /**
+    * {@inheritDoc}
+    */
+    @Override
+    public void delete(Long id) {
+
+        this.prestamoRepository.deleteById(id);
+
     }
     
     

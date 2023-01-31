@@ -17,20 +17,34 @@ public class PrestamoDto {
 
     private ClientDto client;
 
-    private Date fecha_inicio;
+    private Date fechaInicio;
 
-    private Date fecha_fin;
+    private Date fechaFin;
+    
+    
+    
+    /**
+    * @return id
+    */
+    public Long getId() {
 
-	public Long getId() {
-		return id;
-	}
+        return this.id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+    * @param id new value of {@link #getId}.
+    */
+    public void setId(Long id) {
+
+        this.id = id;
+    }
+
+    
+    
+    
 
 	public GameDto getGame() {
-		return game;
+		return this.game;
 	}
 
 	public void setGame(GameDto game) {
@@ -38,28 +52,35 @@ public class PrestamoDto {
 	}
 
 	public ClientDto getClient() {
-		return client;
+		return this.client;
 	}
 
 	public void setClient(ClientDto client) {
 		this.client = client;
 	}
 
-	public Date getFecha_inicio() {
-		return fecha_inicio;
+	public Date getFechaInicio() {
+		return fechaInicio;
 	}
 
-	public void setFecha_inicio(Date fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
 	}
 
-	public Date getFecha_fin() {
-		return fecha_fin;
+	public Date getFechaFin() {
+		return fechaFin;
 	}
 
-	public void setFecha_fin(Date fecha_fin) {
-		this.fecha_fin = fecha_fin;
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
+    
+
+
+
+  
+
+
     
     
 

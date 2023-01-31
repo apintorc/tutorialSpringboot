@@ -53,7 +53,7 @@ public class AuthorController {
     }
 
     /**
-    * Método para crear o actualizar un {@link com.ccsw.tutorial.author.model.Author}
+    * Método para eliminar un {@link com.ccsw.tutorial.author.model.Author}
     * @param id PK de la entidad
     */
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)

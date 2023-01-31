@@ -18,11 +18,11 @@ public interface PrestamoService {
     * Recupera los préstamos filtrando opcionalmente por juego, cliente y fecha del préstamo.
     * @param idGame
     * @param idClient
-    * @param fecha_inicio
-    * @param fecha_fin
+    * @param fechaInicio
+    * @param fechaFin
     * @return
     */
-    List<Prestamo> find(Long idGame, Long idClient, Date fecha_inicio, Date fecha_fin);
+    List<Prestamo> find(Long idGame, Long idClient, Date fechaInicio, Date fechaFin);
 
     /**
     * Guarda un préstamo
@@ -43,5 +43,11 @@ public interface PrestamoService {
     * @return
     */
     List<Prestamo> findAll();
+    
+    /**
+    * Método para crear o actualizar un {@link com.ccsw.tutorial.prestamo.model.Prestamo}
+    * @param id
+    */
+    void delete(Long id);
 
 }

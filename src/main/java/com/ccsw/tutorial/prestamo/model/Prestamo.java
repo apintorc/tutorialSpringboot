@@ -34,22 +34,38 @@ public class Prestamo {
     @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
-    @Column(name = "fecha_inicio", nullable = false)
-    private Date fecha_inicio;
+    @Column(name = "fechaInicio", nullable = false)
+    private Date fechaInicio;
 
-    @Column(name = "fecha_fin", nullable = false)
-    private Date fecha_fin;
+    @Column(name = "fechaFin", nullable = false)
+    private Date fechaFin;
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	public Date getFechaInicio() {
+		return fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
 	public Game getGame() {
-		return game;
+		return this.game;
 	}
 
 	public void setGame(Game game) {
@@ -57,28 +73,13 @@ public class Prestamo {
 	}
 
 	public Client getClient() {
-		return client;
+		return this.client;
 	}
 
 	public void setClient(Client client) {
 		this.client = client;
 	}
 
-	public Date getFecha_inicio() {
-		return fecha_inicio;
-	}
-
-	public void setFecha_inicio(Date fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
-	}
-
-	public Date getFecha_fin() {
-		return fecha_fin;
-	}
-
-	public void setFecha_fin(Date fecha_fin) {
-		this.fecha_fin = fecha_fin;
-	}
     
     
 

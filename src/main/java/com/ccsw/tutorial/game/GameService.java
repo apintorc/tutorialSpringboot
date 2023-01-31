@@ -2,7 +2,6 @@ package com.ccsw.tutorial.game;
 
 import java.util.List;
 
-import com.ccsw.tutorial.client.model.Client;
 import com.ccsw.tutorial.game.model.Game;
 import com.ccsw.tutorial.game.model.GameDto;
 
