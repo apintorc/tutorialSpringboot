@@ -20,8 +20,6 @@ public interface PrestamoRepository extends CrudRepository<Prestamo, Long> {
     */
     Page<Prestamo> findAll(Pageable pageable);
 
-    @Query("select p from Prestamo p where (:idGame is null or p.game.id like '%'||:idGame||'%') and (:idClient is null or p.client.id = :idClient) and (:fechaInicio is null or :fechaFin is null)")
-    List<Prestamo> find(@Param("idGame") Long idGame, @Param("idClient") Long idClient, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
-
-    
+    @Query("select p from Prestamo p where (:gameId is null or p.game.id = :gameId) and (:clientId is null or p.client.id = :clientId) and (:fechaInicio is null or p.fechaInicio = :fechaInicio )AND (:fechaFin IS NULL OR p.fechaFin = :fechaFin )")
+    Page<Prestamo> find(Pageable pageable, @Param("gameId") Long gameId, @Param("clientId") Long clientId, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,29 +32,19 @@ public class PrestamoController {
 
     @Autowired
     BeanMapper beanMapper;
-    
-    /**
-    * Método para recuperar un listado paginado de {@link com.ccsw.tutorial.prestamo.model.Prestamo}
-    * @param dto
-    * @return
-    */
-    
-    
+
+
     @RequestMapping(path = "", method = RequestMethod.POST)
-    public Page<PrestamoDto> findPage(@RequestBody PrestamoSearchDto dto) {
-    	return this.beanMapper.mapPage(this.prestamoService.findPage(dto), PrestamoDto.class);
-       
-    }
+    public Page<PrestamoDto> find(
+    		@RequestBody PrestamoSearchDto pageable,
+    		@RequestParam(value = "gameId", required = false) Long idGame,
+            @RequestParam(value = "clientId", required = false) Long idClient, 
+            @RequestParam(value = "fechaInicio", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaInicio , 
+            @RequestParam(value = "fechaFin", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<PrestamoDto> find(@RequestParam(value = "idGame", required = false) Long idGame,
-            @RequestParam(value = "idClient", required = false) Long idClient, 
-            @RequestParam(value = "fechaInicio", required = false) Date fechaInicio, 
-            @RequestParam(value = "fechaFin", required = false) Date fechaFin) {
+        Page<Prestamo> prestamos = prestamoService.find(pageable, idGame, idClient, fechaInicio, fechaFin);
 
-        List<Prestamo> prestamos = prestamoService.find(idGame, idClient, fechaInicio, fechaFin);
-
-        return beanMapper.mapList(prestamos, PrestamoDto.class);
+        return beanMapper.mapPage(prestamos, PrestamoDto.class);
     }
 
     @RequestMapping(path = { "", "/{id}" }, method = RequestMethod.PUT)

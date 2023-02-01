@@ -22,7 +22,7 @@ public interface PrestamoService {
     * @param fechaFin
     * @return
     */
-    List<Prestamo> find(Long idGame, Long idClient, Date fechaInicio, Date fechaFin);
+	Page<Prestamo> find(PrestamoSearchDto pageable,Long idGame, Long idClient, Date fechaInicio, Date fechaFin);
 
     /**
     * Guarda un préstamo

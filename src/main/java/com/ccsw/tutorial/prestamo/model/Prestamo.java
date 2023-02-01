@@ -11,6 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import com.ccsw.tutorial.game.model.Game;
 import com.ccsw.tutorial.client.model.Client;
 
@@ -35,9 +39,11 @@ public class Prestamo {
     private Client client;
 
     @Column(name = "fechaInicio", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date fechaInicio;
 
     @Column(name = "fechaFin", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date fechaFin;
 
 	public Long getId() {
