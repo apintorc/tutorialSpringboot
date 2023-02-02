@@ -19,7 +19,8 @@ public interface PrestamoRepository extends CrudRepository<Prestamo, Long> {
     * @return
     */
     Page<Prestamo> findAll(Pageable pageable);
-
-    @Query("select p from Prestamo p where (:gameId is null or p.game.id = :gameId) and (:clientId is null or p.client.id = :clientId) and (:fechaInicio is null or p.fechaInicio = :fechaInicio )AND (:fechaFin IS NULL OR p.fechaFin = :fechaFin )")
-    Page<Prestamo> find(Pageable pageable, @Param("gameId") Long gameId, @Param("clientId") Long clientId, @Param("fechaInicio") Date fechaInicio, @Param("fechaFin") Date fechaFin);
+    //@Query("SELECT p FROM Prestamo p WHERE (:gameId IS NULL OR p.game.id = :gameId) AND (:clientId IS NULL OR p.client.id = :clientId) AND (:fechaPrestamo IS NULL OR (p.fecha_prestamo <= :fechaPrestamo AND p.fecha_devolucion > :fechaPrestamo))")
+    @Query("select p from Prestamo p where (:gameId is null or p.game.id = :gameId) and (:clientId is null or p.client.id = :clientId) and (:fecha is null  or ( :fecha BETWEEN p.fechaInicio AND p.fechaFin))")
+    
+    Page<Prestamo> find(Pageable pageable, @Param("gameId") Long gameId, @Param("clientId") Long clientId, @Param("fecha") Date fecha);
 }

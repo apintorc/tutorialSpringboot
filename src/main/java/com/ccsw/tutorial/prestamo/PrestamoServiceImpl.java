@@ -36,9 +36,9 @@ public class PrestamoServiceImpl implements PrestamoService {
     * {@inheritDoc}
     */
     @Override
-    public Page<Prestamo> find(PrestamoSearchDto pageable, Long idGame, Long idClient, Date fechaInicio, Date fechaFin){
+    public Page<Prestamo> find(PrestamoSearchDto pageable, Long idGame, Long idClient, Date fecha){
     	
-        return this.prestamoRepository.find(pageable.getPageable(), idGame, idClient, fechaInicio, fechaFin);
+        return this.prestamoRepository.find(pageable.getPageable(), idGame, idClient, fecha);
     }
 
     /**

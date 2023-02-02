@@ -39,10 +39,10 @@ public class PrestamoController {
     		@RequestBody PrestamoSearchDto pageable,
     		@RequestParam(value = "gameId", required = false) Long idGame,
             @RequestParam(value = "clientId", required = false) Long idClient, 
-            @RequestParam(value = "fechaInicio", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaInicio , 
-            @RequestParam(value = "fechaFin", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
-
-        Page<Prestamo> prestamos = prestamoService.find(pageable, idGame, idClient, fechaInicio, fechaFin);
+            @RequestParam(value = "fecha", required = false)@DateTimeFormat(pattern = "MM-dd-yyyy") Date fecha){ 
+            //@RequestParam(value = "fechaFin", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
+    		//fecha="2022/05/03";
+        Page<Prestamo> prestamos = prestamoService.find(pageable, idGame, idClient, fecha);
 
         return beanMapper.mapPage(prestamos, PrestamoDto.class);
     }
