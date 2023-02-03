@@ -49,5 +49,18 @@ public interface PrestamoService {
     * @param id
     */
     void delete(Long id);
+    
+    /**
+    * Método para comprobar si un {@link com.ccsw.tutorial.juego.model.Juego} ya está reservado por otro {@link com.ccsw.tutorial.cliente.model.Cliente} en un mismo día
+    * @param dto
+    */
+    boolean juegoReservado(Long idGame, Date fechaInicio, Date fechaFin);
+    
+    /**
+    * Método para comprobar si un {@link com.ccsw.tutorial.cliente.model.Cliente} tiene más de 2 {@link com.ccsw.tutorial.juego.model.Juego} reservados en un mismo día
+    * @param clienteId, fechaInicio, fechaFin
+    */
+    boolean clienteReserva(Long idCliente, Date fechaInicio, Date fechaFin);
+
 
 }

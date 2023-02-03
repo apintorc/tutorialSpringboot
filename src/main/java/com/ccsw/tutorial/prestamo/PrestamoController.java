@@ -41,7 +41,6 @@ public class PrestamoController {
             @RequestParam(value = "clientId", required = false) Long idClient, 
             @RequestParam(value = "fecha", required = false)@DateTimeFormat(pattern = "MM-dd-yyyy") Date fecha){ 
             //@RequestParam(value = "fechaFin", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date fechaFin) {
-    		//fecha="2022/05/03";
         Page<Prestamo> prestamos = prestamoService.find(pageable, idGame, idClient, fecha);
 
         return beanMapper.mapPage(prestamos, PrestamoDto.class);
@@ -62,5 +61,32 @@ public class PrestamoController {
 
         this.prestamoService.delete(id);
     }
+    
+    /**
+    * Método para comprobar si un {@link com.ccsw.tutorial.juego.model.Juego} ya está reservado por otro {@link com.ccsw.tutorial.cliente.model.Cliente} en un mismo día
+    * @param gameId, fechaInicio, fechaFin
+    */
+	@RequestMapping(path = { "/juego-reservado" }, method = RequestMethod.GET)
+	public boolean juegoReservado(@RequestParam(value = "gameId", required = true) Long idGame,
+					              @RequestParam(value = "fechaInicio", required = true)@DateTimeFormat(pattern = "MM-dd-yyyy") Date fechaInicio,
+					              @RequestParam(value = "fechaFin", required = true)@DateTimeFormat(pattern = "MM-dd-yyyy") Date fechaFin){  
+
+		return this.prestamoService.juegoReservado(idGame, fechaInicio, fechaFin);
+	}
+	
+    /**
+    * Método para comprobar si un {@link com.ccsw.tutorial.cliente.model.Cliente} tiene más de 2 {@link com.ccsw.tutorial.juego.model.Juego} reservados en un mismo día
+    * @param clienteId, fechaInicio, fechaFin
+    */
+	@RequestMapping(path = { "/cliente-reserva" }, method = RequestMethod.GET)
+	public boolean clienteReserva(@RequestParam(value = "clientId", required = true) Long idCliente,
+					              @RequestParam(value = "fechaInicio", required = true)@DateTimeFormat(pattern = "MM-dd-yyyy") Date fechaInicio,
+					              @RequestParam(value = "fechaFin", required = true)@DateTimeFormat(pattern = "MM-dd-yyyy") Date fechaFin){  
+
+		return this.prestamoService.clienteReserva(idCliente, fechaInicio, fechaFin);
+	}
+    
+    
+    
 
 }

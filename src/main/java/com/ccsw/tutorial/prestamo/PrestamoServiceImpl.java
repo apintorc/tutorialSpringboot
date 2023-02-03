@@ -88,6 +88,19 @@ public class PrestamoServiceImpl implements PrestamoService {
 
     }
     
+    /**
+    * {@inheritDoc}
+    */
+    public boolean juegoReservado(Long idGame, Date fechaInicio, Date fechaFin) {
+    	return this.prestamoRepository.juegoReservado(idGame, fechaInicio, fechaFin);
+    }
+    /**
+    * {@inheritDoc}
+    */
+    public boolean clienteReserva(Long idCliente, Date fechaInicio, Date fechaFin) {
+    	return this.prestamoRepository.clienteReserva(idCliente, fechaInicio, fechaFin);
+    }
+    
     
 
 }
